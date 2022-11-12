@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 Console.WriteLine("Hello, World!");
 
-var connection = @"Server=.;Database=EFCoreMastersDB.Session01;Trusted_Connection=True"; ; // TODO : Add your connection string here
+var connection = @"Server=.;Database=EFCoreMastersDB.Session01;Trusted_Connection=True"; // TODO : Add your connection string here
 var optionsBuilder =
     new DbContextOptionsBuilder
            <AppDbContext>();
