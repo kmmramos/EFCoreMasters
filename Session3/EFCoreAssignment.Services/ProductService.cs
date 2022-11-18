@@ -45,15 +45,7 @@ namespace EFCoreAssignment.Data.Services
             };
 
             _context.Products.Add(product);
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch
-            {
-                throw;
-            }
+            await _context.SaveChangesAsync();
 
             int createdProductId = GetProduct(product.Id).Result.Id;
             if (createdProductId == 0)
@@ -94,15 +86,7 @@ namespace EFCoreAssignment.Data.Services
                 throw new ArgumentNullException("Product is not found!");
 
             _context.Products.Remove(productToBeDeleted);
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch
-            {
-                throw;
-            }
+            await _context.SaveChangesAsync();
         }
 
         private bool ProductExists(int id)
