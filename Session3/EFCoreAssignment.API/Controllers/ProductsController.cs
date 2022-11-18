@@ -1,4 +1,5 @@
 ﻿using EFCoreAssignment.Data.Services;
+using EFCoreAssignment.Services.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EFCoreAssignment.API.Controllers
@@ -42,14 +43,11 @@ namespace EFCoreAssignment.API.Controllers
             {
                 var result = await _service.CreateProduct(new CreateProductDto(vm.Name, vm.ShopId));
 
-                if (result == 0)
-                    return BadRequest();
-
                 return Ok(result);
             }
-            catch
+            catch(NotFoundException)
             {
-                return BadRequest();
+                return NotFound();
             }
 
         }
@@ -62,7 +60,7 @@ namespace EFCoreAssignment.API.Controllers
                 await _service.UpdateProduct(new UpdateProductDto(vm.Id, vm.Name, vm.ShopId));
                 return Ok();
             }
-            catch
+            catch (NotFoundException)
             {
                 return NotFound();
             }            
@@ -76,7 +74,7 @@ namespace EFCoreAssignment.API.Controllers
                 await _service.DeleteProduct(id);
                 return Ok();
             }
-            catch
+            catch (NotFoundException)
             {
                 return NotFound();
             }

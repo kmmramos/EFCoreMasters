@@ -1,4 +1,5 @@
 ﻿using EFCoreAssignment.Data.Entities;
+using EFCoreAssignment.Services.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
 namespace EFCoreAssignment.Data.Services
@@ -38,44 +39,39 @@ namespace EFCoreAssignment.Data.Services
         public async Task<int> CreateProduct(CreateProductDto productForCreation)
         {
             // TODO create a product
+            if (!ShopExists(productForCreation.ShopId))
+                throw new NotFoundException("Shop is not found!");
+
             var product = new Product()
             {
                 Name = productForCreation.Name,
                 ShopId = productForCreation.ShopId
-            };
+            };            
 
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
             int createdProductId = GetProduct(product.Id).Result.Id;
-            if (createdProductId == 0)
-                return 0;
-
             return createdProductId;
         }
 
         public async Task UpdateProduct(UpdateProductDto productForUpdate)
         {
             //TODO update a product
+            if (!ProductExists(productForUpdate.Id))
+                throw new NotFoundException("Product is not found!");
+            else if (!ShopExists(productForUpdate.ShopId))
+                throw new NotFoundException("Shop is not found!");
+
             var product = new Product()
             {
                 Id = productForUpdate.Id,
                 Name = productForUpdate.Name,
                 ShopId = productForUpdate.ShopId
             };
-            _context.Entry(product).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch
-            {
-                if (!ProductExists(productForUpdate.Id))
-                    throw new DbUpdateConcurrencyException();
-                else
-                    throw;
-            }
+            _context.Entry(product).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteProduct(int id)
@@ -83,7 +79,7 @@ namespace EFCoreAssignment.Data.Services
             //TODO delete a product
             var productToBeDeleted = await _context.Products.FindAsync(id);
             if (productToBeDeleted == null)
-                throw new ArgumentNullException("Product is not found!");
+                throw new NotFoundException("Product is not found!");
 
             _context.Products.Remove(productToBeDeleted);
             await _context.SaveChangesAsync();
@@ -92,6 +88,11 @@ namespace EFCoreAssignment.Data.Services
         private bool ProductExists(int id)
         {
             return _context.Products.Any(e => e.Id == id);
+        }
+
+        private bool ShopExists(int id)
+        {
+            return _context.Shops.Any(e => e.Id == id);
         }
 
     }
