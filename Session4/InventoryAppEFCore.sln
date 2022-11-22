@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryAppEFCore.DataLayer", "InventoryAppEFCore.DataLayer\InventoryAppEFCore.DataLayer.csproj", "{DA41E98F-E3FF-4539-93B3-A3F2D1762555}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryAppEFCore.API", "InventoryAppEFCore.API\InventoryAppEFCore.API.csproj", "{B1EF30FC-BB54-40C4-AC3A-EA6D1ED3A01C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA41E98F-E3FF-4539-93B3-A3F2D1762555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA41E98F-E3FF-4539-93B3-A3F2D1762555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA41E98F-E3FF-4539-93B3-A3F2D1762555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA41E98F-E3FF-4539-93B3-A3F2D1762555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1EF30FC-BB54-40C4-AC3A-EA6D1ED3A01C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1EF30FC-BB54-40C4-AC3A-EA6D1ED3A01C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1EF30FC-BB54-40C4-AC3A-EA6D1ED3A01C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1EF30FC-BB54-40C4-AC3A-EA6D1ED3A01C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BAD51259-2CE8-4531-83BD-AD0AFCD5A61B}
+	EndGlobalSection
+EndGlobal
