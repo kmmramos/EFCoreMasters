@@ -16,9 +16,17 @@ namespace InventoryAppEFCore.DataLayer.EfCode.Configurations
                 .WithOne()                                
                 .HasForeignKey<PriceOffer>(p => p.ProductId);
 
-            entity.HasMany(p => p.Reviews)                 
-                .WithOne()                                 
-                .HasForeignKey(p => p.ProductId);             
+            entity.HasMany(p => p.Reviews)
+                .WithOne()
+                .HasForeignKey(p => p.ProductId);
+
+            entity.HasMany(p => p.SuppliersLink)
+                  .WithMany(p => p.ProductsLink)
+                  .UsingEntity<ProductSupplier>(
+                    productSupplier => productSupplier.HasOne(p => p.Supplier)
+                                                      .WithMany().HasForeignKey("SupplierId"),
+                    productSupplier => productSupplier.HasOne(p => p.Product)
+                                                      .WithMany().HasForeignKey("ProductId"));
         }
     }
 }
