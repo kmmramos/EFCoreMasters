@@ -12,9 +12,6 @@ namespace InventoryAppEFCore.DataLayer.EfCode.Configurations
         {
             entity.HasKey(t => t.ClientId);
             entity.Property<DateTime>("UpdatedOn");
-
-            //entity.Property(b => b.ClientId)
-            //    .HasField("_clientId");
         }
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace InventoryAppEFCore.DataLayer.Migrations
 {
-    public partial class InitialSetup : Migration
+    public partial class InitialCommit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -153,21 +153,22 @@ namespace InventoryAppEFCore.DataLayer.Migrations
                 name: "ProductSupplier",
                 columns: table => new
                 {
-                    ProductsLinkProductId = table.Column<int>(type: "int", nullable: false),
-                    SuppliersLinkSupplierId = table.Column<int>(type: "int", nullable: false)
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    SupplierId = table.Column<int>(type: "int", nullable: false),
+                    Order = table.Column<byte>(type: "tinyint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductSupplier", x => new { x.ProductsLinkProductId, x.SuppliersLinkSupplierId });
+                    table.PrimaryKey("PK_ProductSupplier", x => new { x.ProductId, x.SupplierId });
                     table.ForeignKey(
-                        name: "FK_ProductSupplier_Products_ProductsLinkProductId",
-                        column: x => x.ProductsLinkProductId,
+                        name: "FK_ProductSupplier_Products_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductSupplier_Suppliers_SuppliersLinkSupplierId",
-                        column: x => x.SuppliersLinkSupplierId,
+                        name: "FK_ProductSupplier_Suppliers_SupplierId",
+                        column: x => x.SupplierId,
                         principalTable: "Suppliers",
                         principalColumn: "SupplierId",
                         onDelete: ReferentialAction.Cascade);
@@ -214,9 +215,9 @@ namespace InventoryAppEFCore.DataLayer.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductSupplier_SuppliersLinkSupplierId",
+                name: "IX_ProductSupplier_SupplierId",
                 table: "ProductSupplier",
-                column: "SuppliersLinkSupplierId");
+                column: "SupplierId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductTag_TagsTagId",
