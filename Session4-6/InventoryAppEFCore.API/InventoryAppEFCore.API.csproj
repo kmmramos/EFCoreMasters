@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\InventoryAppEFCore.DataLayer\InventoryAppEFCore.DataLayer.csproj" />
+    <ProjectReference Include="..\InventoryAppEFCore.Services\InventoryAppEFCore.Application.csproj" />
   </ItemGroup>
 
 </Project>
