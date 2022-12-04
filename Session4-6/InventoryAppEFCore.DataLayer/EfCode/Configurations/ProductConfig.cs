@@ -27,6 +27,8 @@ namespace InventoryAppEFCore.DataLayer.EfCode.Configurations
                                                       .WithMany().HasForeignKey("SupplierId"),
                     productSupplier => productSupplier.HasOne(p => p.Product)
                                                       .WithMany().HasForeignKey("ProductId"));
+
+            entity.HasQueryFilter(p => !p.IsDeleted);
         }
     }
 }

@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryAppEFCore.DataLaye
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryAppEFCore.API", "InventoryAppEFCore.API\InventoryAppEFCore.API.csproj", "{B1EF30FC-BB54-40C4-AC3A-EA6D1ED3A01C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryAppEFCore.Application", "InventoryAppEFCore.Services\InventoryAppEFCore.Application.csproj", "{60305BBC-5740-479F-A352-1B494B1BDAC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B1EF30FC-BB54-40C4-AC3A-EA6D1ED3A01C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1EF30FC-BB54-40C4-AC3A-EA6D1ED3A01C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1EF30FC-BB54-40C4-AC3A-EA6D1ED3A01C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60305BBC-5740-479F-A352-1B494B1BDAC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60305BBC-5740-479F-A352-1B494B1BDAC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60305BBC-5740-479F-A352-1B494B1BDAC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60305BBC-5740-479F-A352-1B494B1BDAC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
