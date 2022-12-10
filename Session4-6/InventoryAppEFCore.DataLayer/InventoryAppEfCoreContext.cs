@@ -20,6 +20,7 @@ namespace InventoryAppEFCore.DataLayer
         public DbSet<Client> Clients { get; set; }
         public DbSet<PriceOffer> PriceOffers { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<MyView> MyViews { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -49,6 +50,65 @@ namespace InventoryAppEFCore.DataLayer
                     }
                 }
             }
+
+            modelBuilder.Entity<Tag>().HasData(
+                new Tag
+                {
+                    TagId = "Clothes"                    
+                }
+            );
+
+            modelBuilder.Entity<Supplier>().HasData(
+                new Supplier
+                {
+                    SupplierId = 1,
+                    Name = "SM Department Store",
+                    Description = "A large department store"
+                }
+            );
+
+            modelBuilder.Entity<PriceOffer>().HasData(
+                new PriceOffer
+                {
+                    PriceOfferId = 1,
+                    NewPrice = 100,
+                    PromotinalText = "Christmas Promo",
+                    ProductId = 1,
+                }
+            );
+
+            modelBuilder.Entity<Product>().HasData(
+                new Product
+                {
+                    ProductId = 1,
+                    Name = "White Dress",
+                    IsDeleted = false
+                }
+            );
+
+            modelBuilder.Entity<Review>().HasData(
+                new Review
+                {
+                    ReviewId = 1,
+                    VoterName = "Voter Name 1",
+                    Comment = "The dress looks flowy!",
+                    NumStars = 4,
+                    ProductId = 1,
+                }
+            );
+
+            modelBuilder.Entity<Review>().HasData(
+                new Review
+                {
+                    ReviewId = 2,
+                    VoterName = "Voter Name 2",
+                    Comment = "The dress is too big!",
+                    NumStars = 5,
+                    ProductId = 1,
+                }
+            );
+
+            modelBuilder.Entity<MyView>().ToView("EntityFilterView").HasNoKey();
         }
 
     }

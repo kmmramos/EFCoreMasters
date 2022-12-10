@@ -27,8 +27,6 @@ namespace InventoryAppEFCore.Application
 
         public async Task<List<ProductDTO>> GetAllProducts()
         {
-            _context.Database.EnsureCreated();
-            var productCreated = _context.SeedDatabase();
             var config = CreateMapperConfigScanTestAutoMap();
 
             var productDto = await _context.Products

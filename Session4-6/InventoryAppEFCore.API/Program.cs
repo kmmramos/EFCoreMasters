@@ -15,6 +15,7 @@ builder.Services.AddDbContext<InventoryAppEfCoreContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IReviewService, ReviewService>();
 
 var app = builder.Build();
 
