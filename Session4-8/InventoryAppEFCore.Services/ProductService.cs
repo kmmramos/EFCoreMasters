@@ -58,11 +58,20 @@ namespace InventoryAppEFCore.Application
 
             return productDto;
         }
+
+        public async Task<decimal?> CalculateNetSale()
+        {
+            var result = _context.MyUdfMethods.FromSqlInterpolated(
+                $"select dbo.NetSale ({2}, {200}, {50}) as NetSale").FirstOrDefault().NetSale;
+
+            return result;
+        }
     }
 
     public interface IProductService
     {
         Task<List<ProductDTO>> GetAllProducts();
         Task<List<ProductDTO>> GetNonDeletedProducts();
+        Task<decimal?> CalculateNetSale();
     }
 }

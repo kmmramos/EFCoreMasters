@@ -21,6 +21,8 @@ namespace InventoryAppEFCore.DataLayer
         public DbSet<PriceOffer> PriceOffers { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<MyView> MyViews { get; set; }
+        public virtual DbSet<MyUdfMethods> MyUdfMethods { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -109,6 +111,8 @@ namespace InventoryAppEFCore.DataLayer
             );
 
             modelBuilder.Entity<MyView>().ToView("EntityFilterView").HasNoKey();
+
+            modelBuilder.Entity<MyUdfMethods>(e => e.HasNoKey());
         }
 
     }
