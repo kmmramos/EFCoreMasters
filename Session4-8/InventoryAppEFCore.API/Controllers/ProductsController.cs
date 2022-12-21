@@ -34,5 +34,16 @@ namespace InventoryAppEFCore.API.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet("getNetSale")]
+        public async Task<IActionResult> GetNetSale()
+        {
+            var result = await _service.CalculateNetSale();
+
+            if (result == null)
+                return NotFound();
+
+            return Ok(result);
+        }
     }
 }
